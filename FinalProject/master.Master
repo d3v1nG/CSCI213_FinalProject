@@ -12,6 +12,8 @@
     <form id="form1" runat="server">
         <div>
             This is a testpage for a GitHub commit<br />
+            <br />
+            anotha one<br />
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
