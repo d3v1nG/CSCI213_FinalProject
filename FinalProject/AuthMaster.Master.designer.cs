@@ -58,13 +58,13 @@ namespace FinalProject {
         protected global::System.Web.UI.WebControls.HyperLink InboxLink;
         
         /// <summary>
-        /// LoginLink control.
+        /// LoginStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LoginLink;
+        protected global::System.Web.UI.WebControls.LoginStatus LoginStatus;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

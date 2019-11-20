@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,11 +75,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MedicalDB.mdf" />
+    <Content Include="App_Data\MedicalDB_log.ldf">
+      <DependentUpon>MedicalDB.mdf</DependentUpon>
+    </Content>
     <Content Include="home.aspx" />
     <Content Include="Images\stockDoc.jpg" />
+    <Content Include="Logon.aspx" />
+    <Content Include="MedicalDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MedicalDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>MedicalDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="MedicalDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MedicalDBModel.edmx</DependentUpon>
+      <LastGenOutput>MedicalDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="PatientPages\appointments.aspx" />
+    <Content Include="PatientPages\inbox.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,25 +110,87 @@
     <Compile Include="home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="master.Master.cs">
-      <DependentUpon>master.Master</DependentUpon>
+    <Compile Include="Logon.aspx.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="master.Master.designer.cs">
-      <DependentUpon>master.Master</DependentUpon>
+    <Compile Include="Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuthMaster.Master.cs">
+      <DependentUpon>AuthMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuthMaster.Master.designer.cs">
+      <DependentUpon>AuthMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MedicalDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MedicalDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MedicationListTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPages\appointments.aspx.cs">
+      <DependentUpon>appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\appointments.aspx.designer.cs">
+      <DependentUpon>appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPages\inbox.aspx.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\inbox.aspx.designer.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersTable.cs">
+      <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="master.Master" />
+    <Content Include="AuthMaster.Master" />
+    <EntityDeploy Include="MedicalDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MedicalDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MedicalDBModel.edmx.diagram">
+      <DependentUpon>MedicalDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="UML Diagrams\Patient UML.pdf" />
+    <Content Include="UML Diagrams\Doctor UML.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
