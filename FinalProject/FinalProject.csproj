@@ -180,8 +180,11 @@
       <DependentUpon>MedicalDBModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
-    <Content Include="UML Diagrams\Patient UML.pdf" />
-    <Content Include="UML Diagrams\Doctor UML.pdf" />
+    <Content Include="PaperWork\UML Diagrams\Patient UML.pdf" />
+    <Content Include="PaperWork\UML Diagrams\Doctor UML.pdf" />
+    <Content Include="PaperWork\Activiti Diagram for Make an Appointment.pdf" />
+    <Content Include="PaperWork\UML Diagrams\Patient UML with Use Cases.pdf" />
+    <Content Include="PaperWork\CSCI 213_FINAL_3A.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -19,23 +19,28 @@ namespace FinalProject
             medDB.UsersTables.Load();
         }
 
+        //Form login
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
         {
-
+            //get username/password from form
             string userName = LoginWidget.UserName.ToString();
             string password = LoginWidget.Password.ToString();
 
+            // using username look for password
             var userQuery = from user in medDB.UsersTables
                             where user.UserLoginName == userName
-                            select user.UserLoginPass;
+                            select user.UserLoginPass; //should store password hash instead (add feature if time allows)
 
-            string temp = userQuery.FirstOrDefault().ToString();
+            // Check to see if any passwords are returned, if not, show failed
+            if (userQuery.Count() != 0)
+            { 
+                //trim to get rid of accidental white space in DB
+                string currentPass = userQuery.FirstOrDefault().ToString().Trim();
 
-            bool fuckingVariableThatShouldntFuckinBeHere = temp.Equals(password); //literally wont fuccking evaluate to true
-
-            if (fuckingVariableThatShouldntFuckinBeHere) 
-            {
-                FormsAuthentication.RedirectFromLoginPage(LoginWidget.UserName, true);
+                if (currentPass.Equals(password))
+                {
+                    FormsAuthentication.RedirectFromLoginPage(LoginWidget.UserName, true);
+                }
             }
 
         }

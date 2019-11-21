@@ -19,9 +19,9 @@
             <h1><span class="newStyle1">Hospital Web Dashboard</span></h1>
             <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="~/home.aspx">Home</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="AppointmentLink" runat="server" NavigateUrl="~/Pages/appointments.aspx">Appointments</asp:HyperLink>
+            <asp:HyperLink ID="AppointmentLink" runat="server" NavigateUrl="~/PatientPages/appointments.aspx">Appointments</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="InboxLink" runat="server" NavigateUrl="~/Pages/inbox.aspx">Inbox</asp:HyperLink>
+            <asp:HyperLink ID="InboxLink" runat="server" NavigateUrl="~/PatientPages/inbox.aspx">Inbox</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
             <asp:LoginStatus ID="LoginStatus" runat="server" />
             <br />
