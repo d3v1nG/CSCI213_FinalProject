@@ -31,6 +31,12 @@ namespace FinalProject
                             where user.UserLoginName == userName
                             select user.UserLoginPass; //should store password hash instead (add feature if time allows)
 
+            // check user status
+            var userCheck = from user in medDB.UsersTables
+                            where user.UserLoginName == userName
+                            select user.UserLoginType;
+            var temp = userCheck.FirstOrDefault().Trim().ToString();
+
             // Check to see if any passwords are returned, if not, show failed
             if (userQuery.Count() != 0)
             { 
@@ -40,6 +46,12 @@ namespace FinalProject
                 if (currentPass.Equals(password))
                 {
                     FormsAuthentication.RedirectFromLoginPage(LoginWidget.UserName, true);
+                    if (temp.Equals("patient"))
+                        Response.Redirect("~/PatientPages/home.aspx");
+                    else if (temp.Equals("doctor"))
+                        Response.Redirect("~/DoctorPages/home.aspx");
+                    else
+                        Response.Redirect("~/PatientPages/home.aspx");
                 }
             }
 

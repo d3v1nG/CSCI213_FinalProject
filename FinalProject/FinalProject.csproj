@@ -79,8 +79,10 @@
     <Content Include="App_Data\MedicalDB_log.ldf">
       <DependentUpon>MedicalDB.mdf</DependentUpon>
     </Content>
-    <Content Include="DoctorPagess\home.aspx" />
-    <Content Include="home.aspx" />
+    <Content Include="DoctorPages\appointments.aspx" />
+    <Content Include="DoctorPages\home.aspx" />
+    <Content Include="DoctorPages\inbox.aspx" />
+    <Content Include="PatientPages\home.aspx" />
     <Content Include="Images\stockDoc.jpg" />
     <Content Include="Logon.aspx" />
     <Content Include="MedicalDBModel.Context.tt">
@@ -101,21 +103,42 @@
     <Compile Include="AppointmentTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DoctorPagess\home.aspx.cs">
+    <Compile Include="DoctorMaster.Master.cs">
+      <DependentUpon>DoctorMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorMaster.Master.designer.cs">
+      <DependentUpon>DoctorMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPages\appointments.aspx.cs">
+      <DependentUpon>appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorPages\appointments.aspx.designer.cs">
+      <DependentUpon>appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPages\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DoctorPagess\home.aspx.designer.cs">
+    <Compile Include="DoctorPages\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPages\inbox.aspx.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorPages\inbox.aspx.designer.cs">
+      <DependentUpon>inbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="home.aspx.cs">
+    <Compile Include="PatientPages\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="home.aspx.designer.cs">
+    <Compile Include="PatientPages\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logon.aspx.cs">
@@ -125,12 +148,12 @@
     <Compile Include="Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AuthMaster.Master.cs">
-      <DependentUpon>AuthMaster.Master</DependentUpon>
+    <Compile Include="PatientMaster.Master.cs">
+      <DependentUpon>PatientMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AuthMaster.Master.designer.cs">
-      <DependentUpon>AuthMaster.Master</DependentUpon>
+    <Compile Include="PatientMaster.Master.designer.cs">
+      <DependentUpon>PatientMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="MedicalDBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -179,7 +202,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AuthMaster.Master" />
+    <Content Include="PatientMaster.Master" />
     <EntityDeploy Include="MedicalDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MedicalDBModel.Designer.cs</LastGenOutput>
@@ -187,6 +210,7 @@
     <Content Include="MedicalDBModel.edmx.diagram">
       <DependentUpon>MedicalDBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="DoctorMaster.Master" />
     <None Include="packages.config" />
     <Content Include="PaperWork\UML Diagrams\Patient UML.pdf" />
     <Content Include="PaperWork\UML Diagrams\Doctor UML.pdf" />

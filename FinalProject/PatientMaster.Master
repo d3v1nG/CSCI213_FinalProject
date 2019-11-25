@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DoctorMaster.Master.cs" Inherits="FinalProject.master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Welcome!</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .newStyle1 {
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1><span class="newStyle1">Hospital Web Dashboard</span></h1>
+            <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="~/PatientPages/home.aspx">Home</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="AppointmentLink" runat="server" NavigateUrl="~/PatientPages/appointments.aspx">Appointments</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="InboxLink" runat="server" NavigateUrl="~/PatientPages/inbox.aspx">Inbox</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+            <asp:LoginStatus ID="LoginStatus" runat="server" />
+            <br />           
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    <br />
+                </p>
+                <p>
+                </p>
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+<foot>
+    <h4>Gluesing and Meincke 2019 </h4>
+</foot>
+</html>
