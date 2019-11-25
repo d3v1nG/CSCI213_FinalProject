@@ -79,6 +79,7 @@
     <Content Include="App_Data\MedicalDB_log.ldf">
       <DependentUpon>MedicalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="DoctorPagess\home.aspx" />
     <Content Include="home.aspx" />
     <Content Include="Images\stockDoc.jpg" />
     <Content Include="Logon.aspx" />
@@ -99,6 +100,13 @@
   <ItemGroup>
     <Compile Include="AppointmentTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPagess\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorPagess\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
