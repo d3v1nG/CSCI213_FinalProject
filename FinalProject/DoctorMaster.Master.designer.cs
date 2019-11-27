@@ -58,6 +58,24 @@ namespace FinalProject {
         protected global::System.Web.UI.WebControls.HyperLink InboxLink;
         
         /// <summary>
+        /// TestResultsHyperLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TestResultsHyperLink;
+        
+        /// <summary>
+        /// MedicationHyperLinkds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink MedicationHyperLinkds;
+        
+        /// <summary>
         /// LoginStatus control.
         /// </summary>
         /// <remarks>
@@ -74,5 +92,14 @@ namespace FinalProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        
+        /// <summary>
+        /// LoginStatus1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
     }
 }

@@ -16,14 +16,23 @@
 <h3>
     Schedule new appointment:</h3>
 <p>
-    Select Doctor:<asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style1" DataSourceID="SqlDataSource1" DataTextField="FirstName" DataValueField="FirstName" Width="211px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    Select Doctor:<asp:DropDownList ID="DoctorSelectDropDownList" runat="server" CssClass="auto-style1" DataSourceID="SqlDataSource1" DataTextField="FirstName" DataValueField="FirstName" Width="211px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [FirstName], [LastName] FROM [DoctorTable]"></asp:SqlDataSource>
     <asp:EntityDataSource ID="EntityDataSource1" runat="server">
     </asp:EntityDataSource>
 </p>
 <p>
-    Times available: </p>
+    &nbsp;</p>
+    <p>
+        Select prefered date:</p>
+    <p>
+        <asp:Calendar ID="AppointmentDaySelectCalendar" runat="server"></asp:Calendar>
+    </p>
+    <p>
+    Times available:&nbsp; <asp:DropDownList ID="DropDownList1" runat="server" Width="159px">
+        </asp:DropDownList>
+    </p>
 <p>
 </p>
 </asp:Content>
