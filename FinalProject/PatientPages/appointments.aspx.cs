@@ -134,7 +134,7 @@ namespace FinalProject.Pages
             //send message to inbox
             MessageTable msgToPatient = new MessageTable();
             msgToPatient.MessageID = GenerateMsgID();
-            msgToPatient.MessageTo = currUser.UserLoginName;
+            msgToPatient.MessageTo = currUser.Email;
             msgToPatient.MessageFrom = "System";
             msgToPatient.Date = DateTime.Now;
             //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
@@ -145,9 +145,9 @@ namespace FinalProject.Pages
 
             MessageTable msgToDoctor = new MessageTable();
             msgToDoctor.MessageID = GenerateMsgID();
-            msgToDoctor.MessageTo = currDoc.UserLoginName;
+            msgToDoctor.MessageTo = currDoc.Email;
             msgToDoctor.MessageFrom = "System";
-            msgToDoctor.Date = DateTime.Now.Date;
+            msgToDoctor.Date = DateTime.Now;
             //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
             msgToDoctor.Message = "Appointment scheduled";
             medDB.MessageTables.Add(msgToDoctor);
