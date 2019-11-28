@@ -7,7 +7,7 @@
 <h3>
     Appointments</h3>
 <p>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="AppointmentID" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="AppointmentID" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentID" InsertVisible="False" ReadOnly="True" SortExpression="AppointmentID" />
@@ -34,7 +34,7 @@
 <h3>
     Schedule new appointment:</h3>
 <p>
-    Select Doctor:<asp:DropDownList ID="DoctorSelectDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="LastName" DataValueField="LastName" OnSelectedIndexChanged="DoctorSelectDropDownList_SelectedIndexChanged" Width="212px">
+    Select Doctor:<asp:DropDownList ID="DoctorSelectDropDownList" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="LastName" DataValueField="LastName" OnSelectedIndexChanged="DoctorSelectDropDownList_SelectedIndexChanged" Width="212px" Height="16px">
     </asp:DropDownList>
 &nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [LastName], [FirstName] FROM [DoctorTable]"></asp:SqlDataSource>
 </p>
