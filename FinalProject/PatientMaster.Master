@@ -23,9 +23,9 @@
 &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="InboxLink" runat="server" NavigateUrl="~/PatientPages/inbox.aspx">Inbox</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="TestResultsHyperLink" runat="server">Test Results</asp:HyperLink>
+            <asp:HyperLink ID="TestResultsHyperLink" runat="server" NavigateUrl="~/PatientPages/testresults.aspx">Test Results</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
-            <asp:HyperLink ID="MedicationHyperLinkds" runat="server">Medications</asp:HyperLink>
+            <asp:HyperLink ID="MedicationHyperLinkds" runat="server" NavigateUrl="~/PatientPages/medications.aspx">Medications</asp:HyperLink>
             &nbsp;&nbsp;
             <asp:LoginStatus ID="LoginStatus" runat="server" />
             <br />           

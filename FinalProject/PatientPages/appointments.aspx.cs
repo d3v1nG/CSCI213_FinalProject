@@ -68,24 +68,25 @@ namespace FinalProject.Pages
             docID = doctorID;
             currDoc = GetDoctorFromID(doctorID);
 
-            // times where doc is not avaiable because there are appointments during that day
-            var timesTaken = from a in medDB.AppointmentTables
-                             where a.DoctorID == doctorID && a.Data.ToString().Equals(AppointmentDaySelectCalendar.SelectedDate.Date.ToString())
-                             select a.Time;
+            var takenTime = (from a in medDB.AppointmentTables
+                        where a.DoctorID == doctorID && a.Data == AppointmentDaySelectCalendar.SelectedDate.Date /*&& a.Time.Equals(TimeSpan.Parse(time))*/
+                        select (TimeSpan)a.Time);
 
-            List<TimeSpan> workday = new List<TimeSpan>
-            { new TimeSpan(8, 15, 0), new TimeSpan(9, 15, 0), new TimeSpan(10, 15, 0), new TimeSpan(11, 15, 0), new TimeSpan(13, 15, 0), new TimeSpan(14, 15, 0), new TimeSpan(15, 15, 0), new TimeSpan(16, 15, 0)};
-            
+            List<string> workday = new List<string>
+            { new TimeSpan(8, 15, 0).ToString(), new TimeSpan(9, 15, 0).ToString(), new TimeSpan(10, 15, 0).ToString(), new TimeSpan(11, 15, 0).ToString(), new TimeSpan(1, 15, 0).ToString(), new TimeSpan(2, 15, 0).ToString(), new TimeSpan(3, 15, 0).ToString(), new TimeSpan(4, 15, 0).ToString()};
             // find open times
-            foreach ( TimeSpan a in timesTaken)
+
+            foreach (TimeSpan t in takenTime)
             {
-                if (workday.Contains((TimeSpan)a))
+                if (workday.Contains(t.ToString()))
                 {
-                    workday.Remove((TimeSpan)a);
+                    workday.Remove(t.ToString());
                 }
             }
+            
+
             //show times in dropdown 
-            foreach (TimeSpan time in workday)
+            foreach (string time in workday)
             {
                 TimeDropDownList.Items.Add(time.ToString());
             }
@@ -142,15 +143,17 @@ namespace FinalProject.Pages
             UpdateDB();
 
 
-            //MessageTable msgToDoctor = new MessageTable();
-            //msgToDoctor.MessageID = GenerateMsgID();
-            //msgToDoctor.MessageTo = currDoc.UserLoginName;
-            //msgToDoctor.MessageFrom = "System";
-            //msgToDoctor.Date = DateTime.Now.Date;
+            MessageTable msgToDoctor = new MessageTable();
+            msgToDoctor.MessageID = GenerateMsgID();
+            msgToDoctor.MessageTo = currDoc.UserLoginName;
+            msgToDoctor.MessageFrom = "System";
+            msgToDoctor.Date = DateTime.Now.Date;
             //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
-            //medDB.MessageTables.Add(msgToDoctor);
-            //UpdateDB();
+            msgToDoctor.Message = "Appointment scheduled";
+            medDB.MessageTables.Add(msgToDoctor);
+            UpdateDB();
 
+            Server.TransferRequest(Request.Url.AbsolutePath, false);
         }
 
         protected void UpdateDB()
@@ -161,6 +164,7 @@ namespace FinalProject.Pages
             {
                 medDB.SaveChanges();
             }
+            // helpful for debugging entity errors
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
                 Exception raise = dbEx;
