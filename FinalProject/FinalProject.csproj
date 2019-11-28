@@ -97,6 +97,8 @@
     </Content>
     <Content Include="PatientPages\appointments.aspx" />
     <Content Include="PatientPages\inbox.aspx" />
+    <Content Include="PatientPages\medications.aspx" />
+    <Content Include="PatientPages\testresults.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +191,20 @@
     </Compile>
     <Compile Include="PatientPages\inbox.aspx.designer.cs">
       <DependentUpon>inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPages\medications.aspx.cs">
+      <DependentUpon>medications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\medications.aspx.designer.cs">
+      <DependentUpon>medications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPages\testresults.aspx.cs">
+      <DependentUpon>testresults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\testresults.aspx.designer.cs">
+      <DependentUpon>testresults.aspx</DependentUpon>
     </Compile>
     <Compile Include="PatientTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
