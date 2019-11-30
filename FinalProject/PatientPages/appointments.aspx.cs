@@ -252,6 +252,38 @@ namespace FinalProject.Pages
             }
             UpdateDB();
             Server.TransferRequest(Request.Url.AbsolutePath, false);
+
+            SendDeleteMessage();
+        }
+
+        protected void SendDeleteMessage()
+        {
+            currDoc = GetDoctorFromName(DoctorSelectDropDownList.SelectedValue.Trim());
+
+            //send message to inbox
+            MessageTable msgToPatient = new MessageTable();
+            msgToPatient.MessageID = GenerateMsgID();
+            msgToPatient.MessageTo = currUser.Email;
+            msgToPatient.MessageFrom = "System";
+            msgToPatient.Date = DateTime.Now;
+            //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
+            msgToPatient.Message = "Appointment Canceled";
+            medDB.MessageTables.Add(msgToPatient);
+            UpdateDB();
+
+
+            MessageTable msgToDoctor = new MessageTable();
+            msgToDoctor.MessageID = GenerateMsgID();
+            msgToDoctor.MessageTo = currDoc.Email;
+            msgToDoctor.MessageFrom = "System";
+            msgToDoctor.Date = DateTime.Now;
+            //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
+            //msgToDoctor.Message = "Appointment scheduled";
+            msgToDoctor.Message = "Appointment Canceled";
+            medDB.MessageTables.Add(msgToDoctor);
+            UpdateDB();
+
+            //Server.TransferRequest(Request.Url.AbsolutePath, false);
         }
 
 
