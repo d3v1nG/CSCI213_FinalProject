@@ -29,8 +29,26 @@ namespace FinalProject.Pages
                 currUser = currUserQuery.FirstOrDefault();
             }
 
-            //get appointments
+            LoadApptTable();
+        }
 
+        protected void LoadApptTable()
+        {
+            //get appointments
+            var appt = from a in medDB.AppointmentTables
+                       where a.PatientID == currUser.PatientID
+                       select a;
+            if (appt.Count() != AppointmentListBox.Items.Count)
+            {
+                foreach (AppointmentTable at in appt)
+                {
+                    string dt = TrimTime((DateTime)at.Data);
+                    string purpose = at.Purpose;
+                    string aMsg = $"Appointment scheduled on {dt}, at {at.Time}, with Dr. {GetDoctorFromID((int)at.DoctorID).LastName}";
+                    if (purpose != null) aMsg += $" for {purpose}";
+                    AppointmentListBox.Items.Add(aMsg);
+                }
+            }
         }
 
         protected int GenerateApptID()
@@ -42,7 +60,7 @@ namespace FinalProject.Pages
 
         protected void AppointmentDaySelectCalendar_SelectionChanged(object sender, EventArgs e)
         {
-
+            CheckButton_Click(sender, e);
         }
 
         protected void TimeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,6 +148,7 @@ namespace FinalProject.Pages
                 appt.PatientID = currUser.PatientID;
                 appt.Data = AppointmentDaySelectCalendar.SelectedDate;
                 appt.Time = TimeSpan.Parse(TimeDropDownList.SelectedValue);
+                appt.VisitSummary = CheckCharLimit(ReasonTextBox.Text, 50);
                 medDB.AppointmentTables.Add(appt);
                 UpdateDB();
 
@@ -141,7 +160,7 @@ namespace FinalProject.Pages
                 msgToPatient.MessageFrom = "System";
                 msgToPatient.Date = DateTime.Now;
                 //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
-                msgToPatient.Message = "Patient Message";
+                msgToPatient.Message = "Scheduled appointment";
                 medDB.MessageTables.Add(msgToPatient);
                 UpdateDB();
 
@@ -153,7 +172,7 @@ namespace FinalProject.Pages
                 msgToDoctor.Date = DateTime.Now;
                 //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
                 //msgToDoctor.Message = "Appointment scheduled";
-                msgToDoctor.Message = "Doc Message";
+                msgToDoctor.Message = "Scheduled appointment";
                 medDB.MessageTables.Add(msgToDoctor);
                 UpdateDB();
 
@@ -189,9 +208,52 @@ namespace FinalProject.Pages
             }
         }
 
+        protected string TrimTime(DateTime dt)
+        {
+            string time = dt.ToString();
+            var list = time.Split(' ');
+            return list[0];
+        }
+
+        protected string CheckCharLimit(string s, int max)
+        {
+            if (s.Length <= max)
+            {
+                return s;
+            } else
+            {
+                return null;
+            }
+        }
+
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        protected void DeleteButton_Click(object sender, EventArgs e)
+        {
+            string selected = AppointmentListBox.SelectedValue;
+            var appt = from a in medDB.AppointmentTables
+                       where a.PatientID == currUser.PatientID
+                       select a;
+
+            foreach (AppointmentTable at in appt)
+            {
+                string dt = TrimTime((DateTime)at.Data);
+                string purpose = at.Purpose;
+                string aMsg = $"Appointment scheduled on {dt}, at {at.Time}, with Dr. {GetDoctorFromID((int)at.DoctorID).LastName}";
+                if (purpose != null) aMsg += $" for {purpose}";
+                if (aMsg.Equals(selected))
+                {
+                    medDB.AppointmentTables.Remove(at);
+                    break;
+                }
+            }
+            UpdateDB();
+            Server.TransferRequest(Request.Url.AbsolutePath, false);
+        }
+
+
     }
 }

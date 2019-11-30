@@ -5,31 +5,11 @@
     <h3>Manage Appointments Here<br />
 </h3>
 <h3>
+    My
     Appointments</h3>
 <p>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="AppointmentID" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-        <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentID" InsertVisible="False" ReadOnly="True" SortExpression="AppointmentID" />
-            <asp:BoundField DataField="PatientID" HeaderText="PatientID" SortExpression="PatientID" />
-            <asp:BoundField DataField="DoctorID" HeaderText="DoctorID" SortExpression="DoctorID" />
-            <asp:BoundField DataField="Purpose" HeaderText="Purpose" SortExpression="Purpose" />
-            <asp:BoundField DataField="Data" HeaderText="Data" SortExpression="Data" />
-            <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-            <asp:BoundField DataField="VisitSummary" HeaderText="VisitSummary" SortExpression="VisitSummary" />
-        </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [AppointmentTable]"></asp:SqlDataSource>
+    <asp:ListBox ID="AppointmentListBox" runat="server" Height="164px" Width="1126px"></asp:ListBox>
+&nbsp;<asp:Button ID="DeleteButton" runat="server" OnClick="DeleteButton_Click" Text="Cancel Selected" Width="142px" />
     </p>
 <h3>
     Schedule new appointment:</h3>
@@ -49,6 +29,8 @@
     Times available:&nbsp;
     <asp:DropDownList ID="TimeDropDownList" runat="server" Width="159px" OnSelectedIndexChanged="TimeDropDownList_SelectedIndexChanged">
     </asp:DropDownList>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Reason for visit:
+    <asp:TextBox ID="ReasonTextBox" runat="server" Width="246px"></asp:TextBox>
 </p>
     <p>
         <asp:Button ID="ScheduleButton" runat="server" OnClick="ScheduleButton_Click" Text="Schedule Appointment" />
