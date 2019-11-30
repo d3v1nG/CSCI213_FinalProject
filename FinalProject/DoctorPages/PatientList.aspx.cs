@@ -19,10 +19,10 @@ namespace FinalProject.DoctorPages
             
         }
 
-        protected void PatientSelect_Click(object sender, EventArgs e)
+        protected void SelectButton_Click(object sender, EventArgs e)
         {
-            PatientInformation.Items.Add(GridView1.SelectedDataKey[0].ToString());
-            PatientInformation.Items.Add(GridView1.SelectedRow.ToString());
+            //Session.Add("", GridView1.SelectedValue);
+            GridView1.DataSource = GridView1.SelectedValue; 
         }
     }
 }

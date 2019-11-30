@@ -33,21 +33,12 @@ namespace FinalProject.DoctorPages
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
-        /// PatientSelect control.
+        /// SelectButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PatientSelect;
-
-        /// <summary>
-        /// PatientInformation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox PatientInformation;
+        protected global::System.Web.UI.WebControls.Button SelectButton;
     }
 }

@@ -14,10 +14,16 @@
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [PatientID], [FirstName], [LastName] FROM [PatientTable]"></asp:SqlDataSource>
-    <asp:Button ID="PatientSelect" runat="server" OnClick="PatientSelect_Click" Text="Select Patient" />
+    <br />
+    <asp:Button ID="SelectButton" runat="server" OnClick="SelectButton_Click" Text="Select" Width="113px" />
+    <br />
+    <br />
+    <br />
+    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;
+    <br />
     <p>
-        <asp:ListBox ID="PatientInformation" runat="server" Height="119px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="386px"></asp:ListBox>
-    </p>
+        &nbsp;</p>
     <p>
     </p>
     <p>
