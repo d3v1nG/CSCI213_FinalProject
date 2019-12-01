@@ -83,8 +83,9 @@ namespace FinalProject.Pages
                     workday.Remove(t.ToString());
                 }
             }
-            
 
+            TimeDropDownList.Items.Clear();
+           
             //show times in dropdown 
             foreach (string time in workday)
             {
@@ -120,40 +121,44 @@ namespace FinalProject.Pages
         {
             currDoc = GetDoctorFromName(DoctorSelectDropDownList.SelectedValue.Trim());
 
-            //update DB with new appt
-            AppointmentTable appt = new AppointmentTable();
-            appt.AppointmentID = GenerateApptID();
-            appt.DoctorID = docID;
-            appt.PatientID = currUser.PatientID;
-            appt.Data = AppointmentDaySelectCalendar.SelectedDate;
-            appt.Time = TimeSpan.Parse(TimeDropDownList.SelectedValue);
-            medDB.AppointmentTables.Add(appt);
-            UpdateDB();
+            if (TimeDropDownList.SelectedValue != "")
+            {
+                //update DB with new appt
+                AppointmentTable appt = new AppointmentTable();
+                appt.AppointmentID = GenerateApptID();
+                appt.DoctorID = docID;
+                appt.PatientID = currUser.PatientID;
+                appt.Data = AppointmentDaySelectCalendar.SelectedDate;
+                appt.Time = TimeSpan.Parse(TimeDropDownList.SelectedValue);
+                medDB.AppointmentTables.Add(appt);
+                UpdateDB();
 
 
-            //send message to inbox
-            MessageTable msgToPatient = new MessageTable();
-            msgToPatient.MessageID = GenerateMsgID();
-            msgToPatient.MessageTo = currUser.UserLoginName;
-            msgToPatient.MessageFrom = "System";
-            msgToPatient.Date = DateTime.Now;
-            //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
-            msgToPatient.Message = "Appointment scheduled";
-            medDB.MessageTables.Add(msgToPatient);
-            UpdateDB();
+                //send message to inbox
+                MessageTable msgToPatient = new MessageTable();
+                msgToPatient.MessageID = GenerateMsgID();
+                msgToPatient.MessageTo = currUser.Email;
+                msgToPatient.MessageFrom = "System";
+                msgToPatient.Date = DateTime.Now;
+                //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
+                msgToPatient.Message = "Patient Message";
+                medDB.MessageTables.Add(msgToPatient);
+                UpdateDB();
 
 
-            MessageTable msgToDoctor = new MessageTable();
-            msgToDoctor.MessageID = GenerateMsgID();
-            msgToDoctor.MessageTo = currDoc.UserLoginName;
-            msgToDoctor.MessageFrom = "System";
-            msgToDoctor.Date = DateTime.Now.Date;
-            //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
-            msgToDoctor.Message = "Appointment scheduled";
-            medDB.MessageTables.Add(msgToDoctor);
-            UpdateDB();
+                MessageTable msgToDoctor = new MessageTable();
+                msgToDoctor.MessageID = GenerateMsgID();
+                msgToDoctor.MessageTo = currDoc.Email;
+                msgToDoctor.MessageFrom = "System";
+                msgToDoctor.Date = DateTime.Now;
+                //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
+                //msgToDoctor.Message = "Appointment scheduled";
+                msgToDoctor.Message = "Doc Message";
+                medDB.MessageTables.Add(msgToDoctor);
+                UpdateDB();
 
-            Server.TransferRequest(Request.Url.AbsolutePath, false);
+                Server.TransferRequest(Request.Url.AbsolutePath, false);
+            }
         }
 
         protected void UpdateDB()

@@ -207,6 +207,7 @@
     <Compile Include="PatientPages\medications.aspx.designer.cs">
       <DependentUpon>medications.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestData.cs" />
     <Compile Include="PatientPages\testresults.aspx.cs">
       <DependentUpon>testresults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
