@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.DoctorPages
-{
-
-
-    public partial class appointments
-    {
-
+namespace FinalProject.DoctorPages {
+    
+    
+    public partial class appointments {
+        
         /// <summary>
         /// GridView2 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
-
+        
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
@@ -31,16 +29,16 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
+        
         /// <summary>
-        /// DoctorSelectDropDownList control.
+        /// PatientsSelectDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DoctorSelectDropDownList;
-
+        protected global::System.Web.UI.WebControls.DropDownList PatientsSelectDropDownList;
+        
         /// <summary>
         /// SqlDataSource2 control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
-
+        
         /// <summary>
         /// AppointmentDaySelectCalendar control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar AppointmentDaySelectCalendar;
-
+        
         /// <summary>
         /// CheckButton control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CheckButton;
-
+        
         /// <summary>
         /// TimeDropDownList control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList TimeDropDownList;
-
+        
         /// <summary>
         /// ScheduleButton control.
         /// </summary>
@@ -85,5 +83,23 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ScheduleButton;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// editButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button editButton;
     }
 }

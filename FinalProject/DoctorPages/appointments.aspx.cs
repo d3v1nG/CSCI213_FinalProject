@@ -12,17 +12,18 @@ namespace FinalProject.DoctorPages
     {
         MedicalDBEntities medDB = new MedicalDBEntities();
         static int docID = 0;
-        PatientTable currUser;
+        DoctorTable currUser;
         DoctorTable currDoc;
+        MedicalDBEntities appointmentDB = new MedicalDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             medDB.DoctorTables.Load();
             var user = User.Identity.Name;
 
-            var currUserQuery = from patient in medDB.PatientTables
-                                where patient.FirstName.Trim().Equals(user)
-                                select patient;
+            var currUserQuery = from doc in medDB.DoctorTables
+                                where doc.FirstName.Trim().Equals(user)
+                                select doc;
             if (currUserQuery.Count() != 0)
             {
                 currUser = currUserQuery.FirstOrDefault();
@@ -51,14 +52,24 @@ namespace FinalProject.DoctorPages
 
         }
 
+        protected DoctorTable GetCurrentDoctor()
+        {
+            var temp = User.Identity.Name;
+            var q = from d in medDB.DoctorTables
+                    where d.FirstName.Trim().Equals(temp)
+                    select d;
+            return q.FirstOrDefault();
+        }
+
         protected void CheckButton_Click(object sender, EventArgs e)
         {
-            var DoctorLastName = DoctorSelectDropDownList.SelectedValue.Trim();
+            //currUser = 
+            var PatientLastName = PatientsSelectDropDownList.SelectedValue.Trim();
 
             //Only shows the times that the doctor is available
             //Changes times when the doctor is changed
             var doctorQuery = from doc in medDB.DoctorTables
-                              where doc.LastName.Trim().Equals(DoctorLastName)
+                              where doc.LastName.Trim().Equals(currUser.LastName)
                               select doc.DoctorID;
 
             //Dropdown will always show the doctors that are available
@@ -82,6 +93,7 @@ namespace FinalProject.DoctorPages
                 }
             }
 
+            TimeDropDownList.Items.Clear();
 
             //Show times in dropdown 
             foreach (string time in workday)
@@ -106,50 +118,51 @@ namespace FinalProject.DoctorPages
             return doctorQuery.FirstOrDefault();
         }
 
-        protected DoctorTable GetDoctorFromName(string name)
+        protected PatientTable GetPatientFromName(string name)
         {
-            var doctorQuery = from doc in medDB.DoctorTables
-                              where doc.LastName.Trim().Equals(name)
-                              select doc;
-            return doctorQuery.FirstOrDefault();
+            var patientQuery = from P in medDB.PatientTables
+                              where P.LastName.Trim().Equals(name)
+                              select P;
+            return patientQuery.FirstOrDefault();
         }
 
         protected void ScheduleButton_Click(object sender, EventArgs e)
         {
-            currDoc = GetDoctorFromName(DoctorSelectDropDownList.SelectedValue.Trim());
+            currDoc = GetCurrentDoctor();
+            PatientTable currPat = GetPatientFromName(PatientsSelectDropDownList.SelectedValue.Trim());
 
             //Update DB with new appointmnet
             AppointmentTable appt = new AppointmentTable();
             appt.AppointmentID = GenerateApptID();
             appt.DoctorID = docID;
-            appt.PatientID = currUser.PatientID;
+            appt.PatientID = currPat.PatientID;
             appt.Data = AppointmentDaySelectCalendar.SelectedDate;
             appt.Time = TimeSpan.Parse(TimeDropDownList.SelectedValue);
             medDB.AppointmentTables.Add(appt);
             UpdateDB();
 
 
-            //Send message to inbox
-            MessageTable msgToPatient = new MessageTable();
-            msgToPatient.MessageID = GenerateMsgID();
-            msgToPatient.MessageTo = currUser.UserLoginName;
-            msgToPatient.MessageFrom = "System";
-            msgToPatient.Date = DateTime.Now;
-            //msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
-            msgToPatient.Message = "Appointment scheduled";
-            medDB.MessageTables.Add(msgToPatient);
-            UpdateDB();
+            ////Send message to inbox
+            //MessageTable msgToPatient = new MessageTable();
+            //msgToPatient.MessageID = GenerateMsgID();
+            //msgToPatient.MessageTo = currUser.UserLoginName;
+            //msgToPatient.MessageFrom = "System";
+            //msgToPatient.Date = DateTime.Now;
+            ////msgToPatient.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Doctor {currDoc.LastName}";
+            //msgToPatient.Message = "Appointment scheduled";
+            //medDB.MessageTables.Add(msgToPatient);
+            //UpdateDB();
 
 
-            MessageTable msgToDoctor = new MessageTable();
-            msgToDoctor.MessageID = GenerateMsgID();
-            msgToDoctor.MessageTo = currDoc.UserLoginName;
-            msgToDoctor.MessageFrom = "System";
-            msgToDoctor.Date = DateTime.Now.Date;
-            //msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
-            msgToDoctor.Message = "Appointment scheduled";
-            medDB.MessageTables.Add(msgToDoctor);
-            UpdateDB();
+            //MessageTable msgToDoctor = new MessageTable();
+            //msgToDoctor.MessageID = GenerateMsgID();
+            //msgToDoctor.MessageTo = currDoc.UserLoginName;
+            //msgToDoctor.MessageFrom = "System";
+            //msgToDoctor.Date = DateTime.Now.Date;
+            ////msgToDoctor.Message = $"Appointment scheduled on {appt.Data} @ {appt.Time} with Patient {currUser.FirstName + currUser.LastName}";
+            //msgToDoctor.Message = "Appointment scheduled";
+            //medDB.MessageTables.Add(msgToDoctor);
+            //UpdateDB();
 
             Server.TransferRequest(Request.Url.AbsolutePath, false);
         }
@@ -182,6 +195,23 @@ namespace FinalProject.DoctorPages
                 throw raise;
             }
 
+        }
+
+        protected void editButton_Click(object sender, EventArgs e)
+        {
+            appointmentDB.AppointmentTables.Load();
+
+            var visitSummary = (from item in appointmentDB.AppointmentTables.Local
+                               where item.PatientID == Convert.ToInt32(PatientsSelectDropDownList.SelectedValue)
+                               select item.VisitSummary).First();
+
+            visitSummary = TextBox1.Text;
+            
+        }
+
+        protected void AppointmentDaySelectCalendar_SelectionChanged1(object sender, EventArgs e)
+        {
+            CheckButton_Click(sender, e);
         }
     }
 }

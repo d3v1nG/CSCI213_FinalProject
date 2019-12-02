@@ -7,13 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FinalProject.DoctorPages
-{
-
-
-    public partial class PatientList
-    {
-
+namespace FinalProject.DoctorPages {
+    
+    
+    public partial class PatientList {
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// SearchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SearchButton;
+        
         /// <summary>
         /// GridView1 control.
         /// </summary>
@@ -22,7 +38,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-
+        
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
@@ -31,7 +47,7 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
+        
         /// <summary>
         /// SelectButton control.
         /// </summary>
@@ -40,5 +56,41 @@ namespace FinalProject.DoctorPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SelectButton;
+        
+        /// <summary>
+        /// patietnInfoGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView patietnInfoGridView;
+        
+        /// <summary>
+        /// patientTestGridVeiw control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView patientTestGridVeiw;
+        
+        /// <summary>
+        /// MedicationGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView MedicationGridView;
+        
+        /// <summary>
+        /// historyGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView historyGridView;
     }
 }

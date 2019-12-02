@@ -4,11 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
 
 namespace FinalProject.DoctorPages
 {
     public partial class PatientList : System.Web.UI.Page
     {
+        MedicalDBEntities patientDB = new MedicalDBEntities();
+        MedicalDBEntities testResultDB = new MedicalDBEntities();
+        MedicalDBEntities medicationDB = new MedicalDBEntities();
+        MedicalDBEntities historyDB = new MedicalDBEntities();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,8 +27,79 @@ namespace FinalProject.DoctorPages
 
         protected void SelectButton_Click(object sender, EventArgs e)
         {
-            //Session.Add("", GridView1.SelectedValue);
-            GridView1.DataSource = GridView1.SelectedValue; 
+            patientDB.PatientTables.Load();
+            testResultDB.TestsTables.Load();
+            medicationDB.MedicationListTables.Load();
+            historyDB.AppointmentTables.Load();
+
+            var patientInfo = from item in patientDB.PatientTables.Local
+                         where item.PatientID == Convert.ToInt32(GridView1.SelectedDataKey[0])
+                         select item;
+
+            var patientTestResults = (from item in testResultDB.TestsTables.Local
+                                     where item.PatientID == Convert.ToInt32(GridView1.SelectedDataKey[0])
+                                     select item);
+
+            var patientMedications = (from item in medicationDB.MedicationListTables.Local
+                                      where item.PatientID == Convert.ToInt32(GridView1.SelectedDataKey[0])
+                                      select item);
+
+            var patientHistory = from item in historyDB.AppointmentTables.Local
+                                 where item.PatientID == Convert.ToInt32(GridView1.SelectedDataKey[0])
+                                 select item;
+
+
+            patietnInfoGridView.DataSource = patientInfo;
+            patietnInfoGridView.DataBind();
+
+            patientTestGridVeiw.DataSource = patientTestResults;
+            patientTestGridVeiw.DataBind();
+
+            MedicationGridView.DataSource = patientMedications;
+            MedicationGridView.DataBind();
+
+            historyGridView.DataSource = patientHistory;
+            historyGridView.DataBind();
+
+            //ListBox1.Items.Add(patientTestResults.ToList().First().ToString());
+        }
+
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            patientDB.PatientTables.Load();
+            testResultDB.TestsTables.Load();
+            medicationDB.MedicationListTables.Load();
+            historyDB.AppointmentTables.Load();
+
+            var patientInfo = from item in patientDB.PatientTables.Local
+                              where item.PatientID == Convert.ToInt32(TextBox1.Text)
+                              select item;
+
+            var patientTestResults = (from item in testResultDB.TestsTables.Local
+                                      where item.PatientID == Convert.ToInt32(TextBox1.Text)
+                                      select item);
+
+            var patientMedications = (from item in medicationDB.MedicationListTables.Local
+                                      where item.PatientID == Convert.ToInt32(TextBox1.Text)
+                                      select item);
+
+            var patientHistory = from item in historyDB.AppointmentTables.Local
+                                 where item.PatientID == Convert.ToInt32(TextBox1.Text)
+                                 select item;
+
+
+            patietnInfoGridView.DataSource = patientInfo;
+            patietnInfoGridView.DataBind();
+
+            patientTestGridVeiw.DataSource = patientTestResults;
+            patientTestGridVeiw.DataBind();
+
+            MedicationGridView.DataSource = patientMedications;
+            MedicationGridView.DataBind();
+
+            historyGridView.DataSource = patientHistory;
+            historyGridView.DataBind();
+
         }
     }
 }

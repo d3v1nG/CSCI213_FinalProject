@@ -29,21 +29,21 @@
     <p class="auto-style1">
         <strong>Add New Appointment</strong></p>
     <p>
-        Select Doctor:&nbsp;
-        <asp:DropDownList ID="DoctorSelectDropDownList" runat="server" DataSourceID="SqlDataSource2" DataTextField="LastName" DataValueField="LastName" Height="18px" Width="116px">
+        Select Patient:&nbsp;
+        <asp:DropDownList ID="PatientsSelectDropDownList" runat="server" DataSourceID="SqlDataSource2" DataTextField="LastName" DataValueField="LastName" Height="18px" Width="116px">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [LastName] FROM [DoctorTable]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [LastName] FROM [PatientTable]"></asp:SqlDataSource>
     </p>
     <p>
         Select Preferred Time:</p>
     <p>
-        <asp:Calendar ID="AppointmentDaySelectCalendar" runat="server"></asp:Calendar>
+        <asp:Calendar ID="AppointmentDaySelectCalendar" runat="server" OnSelectionChanged="AppointmentDaySelectCalendar_SelectionChanged1"></asp:Calendar>
     </p>
     <p>
         <asp:Button ID="CheckButton" runat="server" OnClick="CheckButton_Click" Text="Check Availability" />
     </p>
     <p>
-        Times Availability:&nbsp;
+        Times Available:&nbsp;
         <asp:DropDownList ID="TimeDropDownList" runat="server" Height="17px" Width="119px">
         </asp:DropDownList>
     </p>
@@ -51,5 +51,9 @@
         <asp:Button ID="ScheduleButton" runat="server" OnClick="ScheduleButton_Click" Text="Schedule Appointmnet" />
     </p>
     <p>
+        <asp:TextBox ID="TextBox1" runat="server" Height="85px" Width="343px"></asp:TextBox>
+    </p>
+    <p>
+        <asp:Button ID="editButton" runat="server" OnClick="editButton_Click" Text="Edit Vist Summary" />
     </p>
 </asp:Content>
