@@ -15,6 +15,7 @@
     <p>
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="AppointmentID" DataSourceID="SqlDataSource1">
             <Columns>
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="AppointmentID" HeaderText="AppointmentID" ReadOnly="True" SortExpression="AppointmentID" />
                 <asp:BoundField DataField="PatientID" HeaderText="PatientID" SortExpression="PatientID" />
                 <asp:BoundField DataField="DoctorID" HeaderText="DoctorID" SortExpression="DoctorID" />
