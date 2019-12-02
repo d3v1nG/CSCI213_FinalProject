@@ -82,6 +82,7 @@
     <Content Include="DoctorPages\appointments.aspx" />
     <Content Include="DoctorPages\home.aspx" />
     <Content Include="DoctorPages\inbox.aspx" />
+    <Content Include="DoctorPages\PatientList.aspx" />
     <Content Include="PatientPages\home.aspx" />
     <Content Include="Images\stockDoc.jpg" />
     <Content Include="Logon.aspx" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="DoctorPages\inbox.aspx.designer.cs">
       <DependentUpon>inbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoctorPages\PatientList.aspx.cs">
+      <DependentUpon>PatientList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoctorPages\PatientList.aspx.designer.cs">
+      <DependentUpon>PatientList.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
@@ -199,6 +207,7 @@
     <Compile Include="PatientPages\medications.aspx.designer.cs">
       <DependentUpon>medications.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TestData.cs" />
     <Compile Include="PatientPages\testresults.aspx.cs">
       <DependentUpon>testresults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
