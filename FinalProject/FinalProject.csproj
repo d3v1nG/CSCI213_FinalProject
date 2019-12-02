@@ -97,6 +97,8 @@
     </Content>
     <Content Include="PatientPages\appointments.aspx" />
     <Content Include="PatientPages\inbox.aspx" />
+    <Content Include="PatientPages\medications.aspx" />
+    <Content Include="PatientPages\testresults.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +192,20 @@
     <Compile Include="PatientPages\inbox.aspx.designer.cs">
       <DependentUpon>inbox.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PatientPages\medications.aspx.cs">
+      <DependentUpon>medications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\medications.aspx.designer.cs">
+      <DependentUpon>medications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPages\testresults.aspx.cs">
+      <DependentUpon>testresults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPages\testresults.aspx.designer.cs">
+      <DependentUpon>testresults.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PatientTable.cs">
       <DependentUpon>MedicalDBModel.tt</DependentUpon>
     </Compile>
@@ -211,12 +227,14 @@
       <DependentUpon>MedicalDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="DoctorMaster.Master" />
+    <Content Include="DoctorPages\Web.config" />
     <None Include="packages.config" />
     <Content Include="PaperWork\UML Diagrams\Patient UML.pdf" />
     <Content Include="PaperWork\UML Diagrams\Doctor UML.pdf" />
     <Content Include="PaperWork\Activiti Diagram for Make an Appointment.pdf" />
     <Content Include="PaperWork\UML Diagrams\Patient UML with Use Cases.pdf" />
     <Content Include="PaperWork\CSCI 213_FINAL_3A.docx" />
+    <Content Include="PatientPages\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

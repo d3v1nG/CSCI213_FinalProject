@@ -23,6 +23,10 @@
 &nbsp;&nbsp;&nbsp;
             <asp:HyperLink ID="InboxLink" runat="server" NavigateUrl="~/PatientPages/inbox.aspx">Inbox</asp:HyperLink>
 &nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="TestResultsHyperLink" runat="server" NavigateUrl="~/PatientPages/testresults.aspx">Test Results</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+            <asp:HyperLink ID="MedicationHyperLinkds" runat="server" NavigateUrl="~/PatientPages/medications.aspx">Medications</asp:HyperLink>
+            &nbsp;&nbsp;
             <asp:LoginStatus ID="LoginStatus" runat="server" />
             <br />           
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -33,9 +37,12 @@
                 </p>
             </asp:ContentPlaceHolder>
         </div>
-    </form>
 </body>
 <foot>
-    <h4>Gluesing and Meincke 2019 </h4>
+    <h4>Gluesing and Meincke 2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Logged in as Patient" />
+    </h4>
 </foot>
+    </form>
+
 </html>

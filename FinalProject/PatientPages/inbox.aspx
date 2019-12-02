@@ -4,6 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h3>Inbox<br />
 </h3>
-<p>
+    <asp:ListBox ID="InboxListBox" runat="server" Height="159px" Width="449px"></asp:ListBox>
+    <br />
+<h3>Outbox</h3>
+&nbsp;&nbsp;&nbsp;
+    <p>
+    Compose message:
 </p>
+<p>
+    &nbsp;</p>
 </asp:Content>
