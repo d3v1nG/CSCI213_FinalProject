@@ -26,6 +26,7 @@ namespace FinalProject.Pages
             var msgList = from m in medDB.MessageTables
                           where m.MessageTo.Trim() == (currPatient.Email.Trim())
                           select m;
+
             foreach (MessageTable m in msgList.ToList())
             {
                 if (m.MessageTo != null)

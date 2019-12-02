@@ -14,18 +14,18 @@
         <strong>&nbsp; Inbox:</strong></p>
     <p>
         &nbsp;
-        <asp:ListBox ID="InboxListBox" runat="server" Height="152px" Width="496px"></asp:ListBox>
+        <asp:ListBox ID="InboxListBox" runat="server" Height="152px" Width="740px"></asp:ListBox>
 &nbsp;
-        <asp:Button ID="DeleteInBoxButton" runat="server" Text="Delete Message" />
+        <asp:Button ID="DeleteInBoxButton" runat="server" Text="Delete Message" OnClick="DeleteInBoxButton_Click" />
         <br />
     </p>
     <p class="auto-style2">
         &nbsp;</p>
     <p class="auto-style2">
         <strong>Outbox:</strong></p>
-    <asp:ListBox ID="OutboxListBox" runat="server" Height="125px" Width="494px"></asp:ListBox>
+    <asp:ListBox ID="OutboxListBox" runat="server" Height="125px" Width="752px"></asp:ListBox>
 &nbsp;&nbsp;
-    <asp:Button ID="DeleteSentButton" runat="server" Text="Delete Message" />
+    <asp:Button ID="DeleteSentButton" runat="server" Text="Delete Message" OnClick="DeleteSentButton_Click1" />
 &nbsp;<br />
     <br />
     <strong><span class="auto-style2">Send Message: </span><span class="auto-style1">
@@ -39,6 +39,6 @@
     Message:<br />
     <asp:TextBox ID="TextBox1" runat="server" Height="109px" Width="288px"></asp:TextBox>
     <br />
-    <asp:Button ID="SendButton" runat="server" Text="Send Message" />
+    <asp:Button ID="SendButton" runat="server" Text="Send Message" OnClick="SendButton_Click1" />
     </span></strong>
 </asp:Content>
