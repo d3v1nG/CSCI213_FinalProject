@@ -202,10 +202,16 @@ namespace FinalProject.DoctorPages
             appointmentDB.AppointmentTables.Load();
 
             var visitSummary = (from item in appointmentDB.AppointmentTables.Local
-                               where item.PatientID == Convert.ToInt32(PatientsSelectDropDownList.SelectedValue)
-                               select item.VisitSummary).First();
+                            where item.AppointmentID == Convert.ToInt32(GridView2.SelectedDataKey[0])     
+                            select item);
 
-            visitSummary = TextBox1.Text;
+            AppointmentTable app = visitSummary.First();
+            app.VisitSummary = TextBox1.Text;
+            appointmentDB.SaveChanges();
+            GridView2.DataBind();
+            
+            
+
             
         }
 
