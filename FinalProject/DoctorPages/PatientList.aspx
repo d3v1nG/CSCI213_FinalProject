@@ -3,6 +3,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
+        &nbsp;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        Search for Patient:
+    </p>
+    <p>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" />
         <br />
     </p>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="PatientID" DataSourceID="SqlDataSource1" Width="380px">
@@ -18,15 +28,27 @@
     <asp:Button ID="SelectButton" runat="server" OnClick="SelectButton_Click" Text="Select" Width="113px" />
     <br />
     <br />
+    Patient Info:<br />
+&nbsp;<asp:GridView ID="patietnInfoGridView" runat="server">
+    </asp:GridView>
     <br />
-    <br />
-&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
+    Test Results:<br />
     <p>
-        &nbsp;</p>
-    <p>
+        <asp:GridView ID="patientTestGridVeiw" runat="server">
+        </asp:GridView>
     </p>
     <p>
+        Medications:
+    </p>
+    <p>
+        <asp:GridView ID="MedicationGridView" runat="server">
+        </asp:GridView>
+    </p>
+    <p>
+        Appointment History:</p>
+    <p>
+        <asp:GridView ID="historyGridView" runat="server">
+        </asp:GridView>
     </p>
     <p>
     </p>
