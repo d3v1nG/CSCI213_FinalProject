@@ -83,6 +83,7 @@
     <Content Include="DoctorPages\home.aspx" />
     <Content Include="DoctorPages\inbox.aspx" />
     <Content Include="DoctorPages\PatientList.aspx" />
+    <Content Include="Images\crazy_doc.png" />
     <Content Include="PatientPages\home.aspx" />
     <Content Include="Images\stockDoc.jpg" />
     <Content Include="Logon.aspx" />
