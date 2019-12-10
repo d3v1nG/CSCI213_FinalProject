@@ -71,34 +71,74 @@ namespace FinalProject.DoctorPages
             medicationDB.MedicationListTables.Load();
             historyDB.AppointmentTables.Load();
 
-            var patientInfo = from item in patientDB.PatientTables.Local
-                              where item.PatientID == Convert.ToInt32(TextBox1.Text)
-                              select item;
+            var inputString = TextBox1.Text;
+            int idValue;
 
-            var patientTestResults = (from item in testResultDB.TestsTables.Local
-                                      where item.PatientID == Convert.ToInt32(TextBox1.Text)
-                                      select item);
+            if (int.TryParse(inputString, out idValue))
+            {   
+                // if input was an ID
+                var patientInfo = (from item in patientDB.PatientTables.Local
+                                   where item.PatientID == idValue
+                                   select item);
 
-            var patientMedications = (from item in medicationDB.MedicationListTables.Local
-                                      where item.PatientID == Convert.ToInt32(TextBox1.Text)
-                                      select item);
+                var patientTestResults = (from item in testResultDB.TestsTables.Local
+                                          where item.PatientID == idValue
+                                          select item);
 
-            var patientHistory = from item in historyDB.AppointmentTables.Local
-                                 where item.PatientID == Convert.ToInt32(TextBox1.Text)
-                                 select item;
+                var patientMedications = (from item in medicationDB.MedicationListTables.Local
+                                          where item.PatientID == idValue
+                                          select item);
+
+                var patientHistory = from item in historyDB.AppointmentTables.Local
+                                     where item.PatientID == idValue
+                                     select item;
 
 
-            patietnInfoGridView.DataSource = patientInfo;
-            patietnInfoGridView.DataBind();
+                patietnInfoGridView.DataSource = patientInfo;
+                patietnInfoGridView.DataBind();
 
-            patientTestGridVeiw.DataSource = patientTestResults;
-            patientTestGridVeiw.DataBind();
+                patientTestGridVeiw.DataSource = patientTestResults;
+                patientTestGridVeiw.DataBind();
 
-            MedicationGridView.DataSource = patientMedications;
-            MedicationGridView.DataBind();
+                MedicationGridView.DataSource = patientMedications;
+                MedicationGridView.DataBind();
 
-            historyGridView.DataSource = patientHistory;
-            historyGridView.DataBind();
+                historyGridView.DataSource = patientHistory;
+                historyGridView.DataBind();
+            }
+            else
+            {
+               var patientInfo = (from item in patientDB.PatientTables.Local
+                               where item.LastName.Trim() == inputString
+                               select item);
+                // other tables are only accessable by patient id
+                int patId = patientInfo.FirstOrDefault().PatientID;
+
+                var patientTestResults = (from item in testResultDB.TestsTables.Local
+                                          where item.PatientID == patId
+                                          select item);
+
+                var patientMedications = (from item in medicationDB.MedicationListTables.Local
+                                          where item.PatientID == patId
+                                          select item);
+
+                var patientHistory = from item in historyDB.AppointmentTables.Local
+                                     where item.PatientID == patId
+                                     select item;
+
+                patietnInfoGridView.DataSource = patientInfo;
+                patietnInfoGridView.DataBind();
+
+                patientTestGridVeiw.DataSource = patientTestResults;
+                patientTestGridVeiw.DataBind();
+
+                MedicationGridView.DataSource = patientMedications;
+                MedicationGridView.DataBind();
+
+                historyGridView.DataSource = patientHistory;
+                historyGridView.DataBind();
+            }
+
 
         }
     }
