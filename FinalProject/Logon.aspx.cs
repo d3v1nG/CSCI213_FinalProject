@@ -35,6 +35,11 @@ namespace FinalProject
             var userCheck = from user in medDB.UsersTables
                             where user.UserLoginName == userName
                             select user.UserLoginType;
+
+            if (userCheck.FirstOrDefault() == null)
+            {
+                Response.Redirect("~/Logon.aspx");
+            }
             var temp = userCheck.FirstOrDefault().Trim().ToString();
 
             // Check to see if any passwords are returned, if not, show failed

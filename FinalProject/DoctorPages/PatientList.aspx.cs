@@ -32,6 +32,8 @@ namespace FinalProject.DoctorPages
             medicationDB.MedicationListTables.Load();
             historyDB.AppointmentTables.Load();
 
+            
+
             var patientInfo = from item in patientDB.PatientTables.Local
                          where item.PatientID == Convert.ToInt32(GridView1.SelectedDataKey[0])
                          select item;
@@ -81,6 +83,11 @@ namespace FinalProject.DoctorPages
                                    where item.PatientID == idValue
                                    select item);
 
+                if (patientInfo.FirstOrDefault() == null)
+                {
+                    Response.Redirect("~/DoctorPages/PatientList.aspx");
+                }
+
                 var patientTestResults = (from item in testResultDB.TestsTables.Local
                                           where item.PatientID == idValue
                                           select item);
@@ -111,6 +118,12 @@ namespace FinalProject.DoctorPages
                var patientInfo = (from item in patientDB.PatientTables.Local
                                where item.LastName.Trim() == inputString
                                select item);
+
+                if (patientInfo.FirstOrDefault() == null)
+                {
+                    Response.Redirect("~/DoctorPages/PatientList.aspx");
+                }
+
                 // other tables are only accessable by patient id
                 int patId = patientInfo.FirstOrDefault().PatientID;
 
