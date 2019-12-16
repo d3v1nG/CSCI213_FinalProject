@@ -13,9 +13,21 @@
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;
         <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" />
-        <br />
     </p>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="PatientID" DataSourceID="SqlDataSource1" Width="380px">
+    <p>
+        &nbsp;</p>
+    <p>
+        Enter prescription:
+        <asp:TextBox ID="MedInputTextBox" runat="server" Width="166px"></asp:TextBox>
+&nbsp;Enter patientID:
+        <asp:TextBox ID="patientIDTextBox" runat="server" Width="167px"></asp:TextBox>
+    </p>
+    <p>
+        &nbsp;
+        <asp:Button ID="AddMedButton" runat="server" OnClick="AddMedButton_Click" Text="Add Medication" Width="169px" />
+&nbsp;<br />
+    </p>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="PatientID" DataSourceID="SqlDataSource1" Width="380px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
             <asp:BoundField DataField="PatientID" HeaderText="PatientID" InsertVisible="False" ReadOnly="True" SortExpression="PatientID" />

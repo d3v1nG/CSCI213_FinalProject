@@ -154,5 +154,33 @@ namespace FinalProject.DoctorPages
 
 
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectButton_Click(sender, e);
+        }
+
+        protected void AddMedButton_Click(object sender, EventArgs e)
+        {
+                medicationDB.MedicationListTables.Load();
+                medicationDB.PatientTables.Load();
+
+                string input = MedInputTextBox.Text;
+                int id = Convert.ToInt32(patientIDTextBox.Text);
+                if (!input.Equals(""))
+                {
+                    MedicationListTable newMed = new MedicationListTable();
+                    newMed.Description = input;
+                    newMed.PatientID = id;
+
+                    //PatientTable currPat = (from x in medicationDB.PatientTables.Local
+                    //                        where x.PatientID == id
+                    //                        select x).FirstOrDefault();
+
+                    medicationDB.MedicationListTables.Add(newMed);
+                    medicationDB.SaveChanges();
+                }
+            
+        }
     }
 }

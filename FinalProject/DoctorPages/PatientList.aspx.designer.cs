@@ -31,6 +31,33 @@ namespace FinalProject.DoctorPages {
         protected global::System.Web.UI.WebControls.Button SearchButton;
         
         /// <summary>
+        /// MedInputTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MedInputTextBox;
+        
+        /// <summary>
+        /// patientIDTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox patientIDTextBox;
+        
+        /// <summary>
+        /// AddMedButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddMedButton;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
